@@ -1,0 +1,40 @@
+
+<% if @snames.nil?  %>
+welcome to the search <br />
+<% else %>
+<h1>Listing Names</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+
+
+
+
+<% @snames.each do |sname| %>
+  <tr>
+    <td><%= sname.name %></td>
+    <td><%= link_to 'Show', sname %></td>
+    <td><%= link_to 'Edit', edit_sname_path(sname) %></td>
+    <td><%= link_to 'Destroy', sname, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New name', new_sname_path %><br />
+ import names from csv  <br />
+
+
+
+
+<%= form_tag import_snames_path, multipart: true %>
+<%= file_field_tag :file %>
+<%= submit_tag "import" %>
+<% end %>

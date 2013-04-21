@@ -1,10 +1,14 @@
-
+ 
 <% if @snames.nil?  %>
-welcome to the search <br />
+<%= link_to "welcome to the search" , root_url %> <br />
+<%= render :partial => 'snames/search' %>
 <% else %>
-<h1>Listing Names</h1>
+<%= link_to "welcome to the search" , root_url %> <br />
+<h1>Listing Names</h1> <br />
+<%= @snames.count  %> results founds 
 
 <table>
+
   <tr>
     <th>Name</th>
     <th></th>
@@ -17,6 +21,7 @@ welcome to the search <br />
 
 
 <% @snames.each do |sname| %>
+
   <tr>
     <td><%= sname.name %></td>
     <td><%= link_to 'Show', sname %></td>
@@ -26,15 +31,17 @@ welcome to the search <br />
 <% end %>
 </table>
 
+
+
+
+
 <br />
 
+
+<% end %>
 <%= link_to 'New name', new_sname_path %><br />
  import names from csv  <br />
+<%= render :partial => 'snames/import' %>
 
 
 
-
-<%= form_tag import_snames_path, multipart: true %>
-<%= file_field_tag :file %>
-<%= submit_tag "import" %>
-<% end %>

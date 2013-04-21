@@ -1,16 +1,17 @@
 require 'csv'
-
+#this is the scaffold names snames 
 class SnamesController < ApplicationController
-caches_page :index
+
   # GET /snames
   # GET /snames.json
   def index
+    
     @snames = Sname.search(params[:search])
-
+   
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @snames }
-    end
+     end
   end
 
   # GET /snames/1
@@ -85,8 +86,8 @@ caches_page :index
   end
 
 
-require 'csv'    
 
+#method use to import csv file 
 
 def import
   Sname.import(params[:file])
